@@ -166,11 +166,6 @@ namespace VAdvantage.Model
         //@Override
         protected override Boolean AfterSave(Boolean newRecord, Boolean success)
         {
-            if (!success)
-            {
-                return success;
-            }
-
             int _client_ID = 0;
             StringBuilder _sql = new StringBuilder();
             //_sql.Append("Select count(*) from  ad_table where tablename like 'FRPT_Charge_Acct'");

@@ -216,26 +216,6 @@ namespace VAdvantage.Model
             SetM_Product_ID(product.GetM_Product_ID());
             SetA_Asset_Group_ID(product.GetA_Asset_Group_ID());
 
-            // VIS0060: Set Equipment Category on Asset from Product and Product Category
-            if (Env.IsModuleInstalled("VA075_") && product.Get_ColumnIndex("VA075_EquipmentCategory_ID") >= 0)
-            {
-                // Get Equipment Category from Product
-                if (Util.GetValueOfInt(product.Get_Value("VA075_EquipmentCategory_ID")) > 0)
-                {
-                    Set_Value("VA075_EquipmentCategory_ID", Util.GetValueOfInt(product.Get_Value("VA075_EquipmentCategory_ID")));
-                }
-                else
-                {
-                    MProductCategory pc = MProductCategory.Get(GetCtx(), product.GetM_Product_Category_ID());
-
-                    // Get Equipment Category from Product Category
-                    if (Util.GetValueOfInt(pc.Get_Value("VA075_EquipmentCategory_ID")) > 0)
-                    {
-                        Set_Value("VA075_EquipmentCategory_ID", Util.GetValueOfInt(pc.Get_Value("VA075_EquipmentCategory_ID")));
-                    }
-                }
-            }
-
             //////////////////////////////*
             //Changes for vafam
             // SetAssetServiceDate(shipment.GetMovementDate());
@@ -784,33 +764,10 @@ namespace VAdvantage.Model
         protected override bool BeforeSave(bool newRecord)
         {
             GetQty();		//	set to 1
-            string name = "";
-            // VIS0060: Get Current next from Serial no Control of Equipment Category selected on Asset.
-            if (newRecord && Env.IsModuleInstalled("VA075_") && Get_ColumnIndex("VA075_EquipmentCategory_ID") >= 0
-                && Util.GetValueOfInt(Get_Value("VA075_EquipmentCategory_ID")) > 0)
-            {
-                int sernoCtlID = Util.GetValueOfInt(DB.ExecuteScalar("SELECT M_SerNoCtl_ID FROM VA075_EquipmentCategory WHERE VA075_EquipmentCategory_ID = "
-                    + Util.GetValueOfInt(Get_Value("VA075_EquipmentCategory_ID"))));
-                
-                if (sernoCtlID > 0)
-                {
-                    MSerNoCtl ctl = new MSerNoCtl(GetCtx(), sernoCtlID, Get_TrxName());
-                    // if Organization level check box is true on Serila No Control, then Get Current next from Serila No tab.
-                    if (ctl.Get_ColumnIndex("IsOrgLevelSequence") >= 0)
-                    {
-                        name = ctl.CreateDefiniteSerNo(this);
-                    }
-                    else
-                    {
-                        name = ctl.CreateSerNo();
-                    }
-                    SetValue(name);
-                }
-            }
-
             MAssetGroup astGrp = new MAssetGroup(GetCtx(), GetA_Asset_Group_ID(), Get_TrxName());
-            if (newRecord && astGrp.Get_ColumnIndex("M_SerNoCtl_ID") >= 0 && astGrp.GetM_SerNoCtl_ID() > 0 && String.IsNullOrEmpty(name))
+            if (newRecord && astGrp.Get_ColumnIndex("M_SerNoCtl_ID") >= 0 && astGrp.GetM_SerNoCtl_ID() > 0 && String.IsNullOrEmpty(GetValue()))
             {
+                string name = "";
                 MSerNoCtl ctl = new MSerNoCtl(GetCtx(), astGrp.GetM_SerNoCtl_ID(), Get_TrxName());
 
                 // if Organization level check box is true on Serila No Control, then Get Current next from Serila No tab.
@@ -824,7 +781,6 @@ namespace VAdvantage.Model
                 }
                 SetValue(name);
             }
-
             #region Fixed Asset Management
             /*to Set Written Down Value on Asset i.e. Gross value of Asset-Depreciated/ Amortized Value Arpit*/
             if (Env.IsModuleInstalled("VAFAM_"))

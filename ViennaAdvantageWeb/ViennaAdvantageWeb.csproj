@@ -59,9 +59,8 @@
       <HintPath>E:\Github\FRPT_FinancialManagment-New\ViennaAdvantageWeb\bin\FRPTSvc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -117,24 +116,8 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Dll\ICSharpCode.SharpZipLib.dll" />
-    <Content Include="Dll\Mono.Security.dll" />
-    <Content Include="Dll\MySql.Data.dll" />
-    <Content Include="Dll\Npgsql.dll" />
-    <Content Include="Dll\PdfSharp.dll" />
-    <Content Include="Dll\SecureEngineUtility.dll" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Images\1000097.jpg" />
-    <Content Include="Images\1000097.png" />
-    <Content Include="Images\Thumb100x100\1000097.png" />
-    <Content Include="Images\Thumb140x120\1000097.jpg" />
-    <Content Include="Images\Thumb16x16\1000097.jpg" />
-    <Content Include="Images\Thumb16x16\1000097.png" />
-    <Content Include="Images\Thumb320x240\1000097.jpg" />
-    <Content Include="Images\Thumb32x32\1000097.jpg" />
-    <Content Include="Images\Thumb32x32\1000097.png" />
-    <Content Include="Images\Thumb48x48\1000097.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -160,6 +143,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="CReports\Reports\VARPT_ProductCost.rpt" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -171,6 +156,12 @@
     <Folder Include="App_Data\" />
     <Folder Include="Images\100by100\" />
     <Folder Include="Images\30by30\" />
+    <Folder Include="Images\Thumb100x100\" />
+    <Folder Include="Images\Thumb140x120\" />
+    <Folder Include="Images\Thumb16x16\" />
+    <Folder Include="Images\Thumb320x240\" />
+    <Folder Include="Images\Thumb32x32\" />
+    <Folder Include="Images\Thumb48x48\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>

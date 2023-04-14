@@ -503,10 +503,8 @@ namespace ViennaAdvantage.Process
             }
             else
             {
-                // Connection with 32 bit Access Database Engine --> Use --> Microsoft.Jet.OleDb.4.0
-                // Connection with 64 bit Access Database Engine -- use --> Microsoft.ACE.OLEDB.12.0; 
                 connString = string.Format(
-    @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source={0};Extended Properties=""Text;HDR=YES;FMT=Delimited""",
+    @"Provider=Microsoft.Jet.OleDb.4.0; Data Source={0};Extended Properties=""Text;HDR=YES;FMT=Delimited""",
     Path.GetDirectoryName(FileName));
                 strConn = "";
             }

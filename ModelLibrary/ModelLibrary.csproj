@@ -20,6 +20,8 @@
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,37 +43,39 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine">
-      <HintPath>..\ViennaAdvantageWeb\Dll\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalDecisions.CrystalReports.Engine.1.0.0\lib\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
     </Reference>
-    <Reference Include="CrystalDecisions.Shared">
-      <HintPath>..\ViennaAdvantageWeb\Dll\CrystalDecisions.Shared.dll</HintPath>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalDecisions.Shared.1.0.0\lib\CrystalDecisions.Shared.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\ViennaAdvantageWeb\Dll\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.ClassLibrary">
-      <HintPath>..\ViennaAdvantageWeb\Dll\IKVM.OpenJDK.ClassLibrary.dll</HintPath>
+      <HintPath>..\..\..\Downloads\official-VAFramework-ERP-CRM-master\packages\IKVM.OpenJDK.ClassLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="IKVM.Runtime">
-      <HintPath>..\ViennaAdvantageWeb\Dll\IKVM.Runtime.dll</HintPath>
+    <Reference Include="IKVM.Runtime, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.Runtime.7.2.4630.5\lib\IKVM.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.Excel">
-      <HintPath>..\ViennaAdvantageWeb\Dll\Interop.Excel.dll</HintPath>
+    <Reference Include="Mail, Version=3.0.23025.1850, Culture=neutral, PublicKeyToken=6dc438ab78a525b3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mail.dll.3.0.23025.1850\lib\net45\Mail.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Mail">
-      <HintPath>..\ViennaAdvantageWeb\Dll\Mail.dll</HintPath>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.QualityTools.Testing.Fakes.16.11.230815\lib\net35\Microsoft.QualityTools.Testing.Fakes.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Security">
       <HintPath>..\ViennaAdvantageWeb\Dll\Mono.Security.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data">
-      <HintPath>..\ViennaAdvantageWeb\Dll\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -84,6 +88,9 @@
     </Reference>
     <Reference Include="PdfSharp">
       <HintPath>..\ViennaAdvantageWeb\Dll\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.0.0\lib\net4\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="SecureEngineUtility">
       <HintPath>..\ViennaAdvantageWeb\Dll\SecureEngineUtility.dll</HintPath>
@@ -1733,7 +1740,6 @@
     <Compile Include="Process\CostCalculationWithAcctSchema.cs" />
     <Compile Include="Process\CostCreate.cs" />
     <Compile Include="Process\CostingCalculation.cs" />
-    <Compile Include="Process\CostingCalculationFromTransaction.cs" />
     <Compile Include="Process\CostUpdate.cs" />
     <Compile Include="Process\CreateAppointment.cs" />
     <Compile Include="Process\CreateContractInvoice.cs" />
@@ -1983,6 +1989,8 @@
     <Compile Include="Utility\Env.cs" />
     <Compile Include="Utility\EnvConstants.cs" />
     <Compile Include="Utility\ExternalWebMethod.cs" />
+    <Compile Include="Utility\Lambda.cs" />
+    <Compile Include="Utility\LambdaBean.cs" />
     <Compile Include="Utility\Msg.cs" />
     <Compile Include="Utility\NativeDigitConverter.cs" />
     <Compile Include="Utility\Null.cs" />
@@ -2147,6 +2155,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\packages\Microsoft.QualityTools.Testing.Fakes.16.11.230815\build\Microsoft.Qualitytools.Testing.Fakes.targets" Condition="Exists('..\packages\Microsoft.QualityTools.Testing.Fakes.16.11.230815\build\Microsoft.Qualitytools.Testing.Fakes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.QualityTools.Testing.Fakes.16.11.230815\build\Microsoft.Qualitytools.Testing.Fakes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.QualityTools.Testing.Fakes.16.11.230815\build\Microsoft.Qualitytools.Testing.Fakes.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -24,7 +24,7 @@ using VAdvantage.Logging;
 
 using System.Web.UI;
 using System.Drawing;
-using Exl = Excel;
+using Exl = Microsoft.Office.Interop.Excel;
 using System.Reflection;
 
 using System.Drawing.Printing;

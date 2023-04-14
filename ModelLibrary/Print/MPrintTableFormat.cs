@@ -19,6 +19,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Design;
 using System.Drawing.Printing;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace VAdvantage.Print
 {
@@ -375,7 +376,7 @@ namespace VAdvantage.Print
 
         }
 
-        public Excel.XlLineStyle GetHeader_StrokeForExcel()
+        public Microsoft.Office.Interop.Excel.XlLineStyle GetHeader_StrokeForExcel()
         {
             if (string.IsNullOrEmpty(header_Stroke1.ToString()))
             {

@@ -70,4 +70,6 @@
 
 
 }
-)(jQuery, VIS);
+)
+
+    (jQuery, VIS);

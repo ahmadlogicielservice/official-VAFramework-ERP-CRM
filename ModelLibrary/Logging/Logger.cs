@@ -71,6 +71,8 @@ namespace VAdvantage.Logging
         //[MethodImpl(MethodImplOptions.Synchronized)]
         public void Log(LogRecord record)
         {
+
+
             //lock (_lock)
             //{
                 if (record.GetLevel().IntValue() < levelValue || levelValue == offValue)

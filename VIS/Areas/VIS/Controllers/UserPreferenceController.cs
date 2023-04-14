@@ -259,8 +259,10 @@ namespace VIS.Controllers
                  retJSON = JsonConvert.SerializeObject(message);
                  return Json(retJSON, JsonRequestBehavior.AllowGet);
              }
-             GmailConfig objGmailConfig = new GmailConfig(AD_User_ID, AD_Client_ID, AD_Org_ID, authCodes, isTask,isContact);
-             message = objGmailConfig.Start(ctx);
+             
+            // GmailConfig objGmailConfig = new GmailConfig(AD_User_ID, AD_Client_ID, AD_Org_ID, authCodes, isTask,isContact);
+             
+           // message = objGmailConfig.Start(ctx);
              if (message.Contains("error"))
              {
                  return Json("false", JsonRequestBehavior.AllowGet);

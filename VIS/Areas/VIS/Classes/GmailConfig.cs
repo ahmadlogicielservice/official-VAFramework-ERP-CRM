@@ -1,11 +1,11 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Web;
-
 using DotNetOpenAuth.Messaging;
 using DotNetOpenAuth.OAuth2;
 using Google.Apis.Authentication.OAuth2;
@@ -21,7 +21,7 @@ namespace VIS.Classes
 {
     public class GmailConfig
     {
-        private CalendarService _calenderService;
+      /*  private CalendarService _calenderService;
         private TasksService _service; // We don't need individual service instances for each client.
         private int AD_User_ID = 0;
         private int AD_Client_ID = 0;
@@ -208,18 +208,18 @@ namespace VIS.Classes
             // Register the authenticator.
 
             this.scope = scope;
-            var provider = new WebServerClient(GoogleAuthenticationServer.Description);
+            var provider = new TestDotNetOpenAuth.DotNetOpenAuth.OAuth2.WebServerClient(GoogleAuthenticationServer.Description);
             provider.ClientIdentifier = ClientCredentials.ClientID;
             provider.ClientSecret = ClientCredentials.ClientSecret;
             var authenticator =
-                new OAuth2Authenticator<WebServerClient>(provider, GetAuthorization) { NoCaching = true };
+                new OAuth2Authenticator<TestDotNetOpenAuth.DotNetOpenAuth.OAuth2.WebServerClient>(provider, GetAuthorization) { NoCaching = true };
             return authenticator;
         }
 
-        private IAuthorizationState GetAuthorization(WebServerClient client)
+        private DotNetOpenAuth.OAuth2.IAuthorizationState GetAuthorization(DotNetOpenAuth.OAuth2.WebServerClient client)
         {
             // If this user is already authenticated, then just return the auth state.
-            IAuthorizationState state = null;
+            DotNetOpenAuth.OAuth2.IAuthorizationState state = null;
             if (state != null)
             {
                 return state;
@@ -667,6 +667,6 @@ namespace VIS.Classes
             dateString.Append("','YYYY-MM-DD HH24:MI:SS')");
             return dateString.ToString();
         }
-
+      */
     }
 }

@@ -97,14 +97,14 @@ namespace VIS.Helpers
                 string sqlEnc = "SELECT isencrypted FROM ad_column WHERE ad_table_id=(SELECT ad_table_id FROM ad_table WHERE tablename='AD_User') AND columnname='Password'";
                 char isEncrypted = Convert.ToChar(DB.ExecuteScalar(sqlEnc));
                 string originalpwd = model.Login1Model.Password;
-                if (isEncrypted == 'Y' && model.Login1Model.Password != null)
-                {
-                    model.Login1Model.Password = SecureEngine.Encrypt(model.Login1Model.Password);
-                }
 
                 //  DataSet dsUserInfo = DB.ExecuteDataset("SELECT AD_User_ID, Value, Password,IsLoginUser,FailedLoginCount FROM AD_User WHERE Value=@username", param);
                 if (dsUserInfo != null && dsUserInfo.Tables[0].Rows.Count > 0)
                 {
+                    if (isEncrypted == 'Y' && model.Login1Model.Password != null)
+                    {
+                        dsUserInfo.Tables[0].Rows[0]["Password"] = SecureEngine.Decrypt(dsUserInfo.Tables[0].Rows[0]["Password"]);
+                    }
                     //if username or password is not matching
                     if ((!dsUserInfo.Tables[0].Rows[0]["Value"].Equals(model.Login1Model.UserValue) ||
                         !dsUserInfo.Tables[0].Rows[0]["Password"].Equals(model.Login1Model.Password))
@@ -179,7 +179,7 @@ namespace VIS.Helpers
                             Token2FAKey = userSKey + ADUserID.ToString() + decKey;
                         }
                         string url = Util.GetValueOfString(HttpContext.Current.Request.Url.AbsoluteUri).Replace("VIS/Account/JsonLogin", "").Replace("https://", "").Replace("http://", "");
-                        setupInfo = tfa.GenerateSetupCode("VA ", url + " " + userSKey, Token2FAKey, 150, 150);
+                        setupInfo = tfa.GenerateSetupCode("VA ", url + " " + userSKey, Token2FAKey, false, 150);
                         model.Login1Model.QRCodeURL = setupInfo.QrCodeSetupImageUrl;
                     }
                     else if (method2FA == X_AD_User.TWOFAMETHOD_VAMobileApp)

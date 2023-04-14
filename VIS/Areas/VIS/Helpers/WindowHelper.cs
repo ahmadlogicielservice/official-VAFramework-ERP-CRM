@@ -81,6 +81,19 @@ namespace VIS.Helpers
 
             key = ctx.GetSecureKey();
 
+            List<string> kk = new List<string>(gTableIn.RowData.Keys);
+            if (gTableIn.TableName == "C_BPartner")
+            {
+                foreach (var kkey in kk)
+                {
+                    if (kkey == "description")
+                    {
+                        //LambdaBean l = Lambda.Encrypt(gTableIn.RowData[kkey].ToString());
+                        //gTableIn.RowData[kkey] = l.GetStorableValue();
+                    }
+                }
+            }
+
             try
             {
                 if (!tableName.EndsWith("_Trl"))	//	translation tables have no model
@@ -118,7 +131,6 @@ namespace VIS.Helpers
             bool inserting = gTableIn.Inserting;
             var dataRow = gTableIn.RowData;
             var dataRowOld = gTableIn.OldRowData;
-
 
             //	Update SQL with specific where clause
             StringBuilder select = new StringBuilder("SELECT ");

@@ -248,6 +248,9 @@ namespace VAdvantage.Logging
                         Initialize(_viennaHome, true, true);
                         if (!_doneHeader)
                         {
+                            if (_writer == null)
+                                return;
+
                             _writer.WriteLine(GetFormatter().GetHead());
                             //AllocConsole();
                             //Console.WriteLine(GetFormatter().GetHead()); // outputs to console window

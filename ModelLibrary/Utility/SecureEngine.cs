@@ -18,7 +18,9 @@ namespace VAdvantage.Utility
         /// <returns>Encrypted Value</returns>
         public static String Encrypt(string value)
         {
-            return  SecureEngineUtility.SecureEngine.Encrypt(value);
+            String ret = Lambda.Encrypt(value).GetStorableValue();
+            return ret; 
+            //return  SecureEngineUtility.SecureEngine.Encrypt(value);
         }	//	encrypt
         /// <summary>
         /// Encrypt the text
@@ -27,7 +29,11 @@ namespace VAdvantage.Utility
         /// <returns>Encrypted Value</returns>
         public static byte[] Encrypt(char[] value)
         {
-            return SecureEngineUtility.SecureEngine.Encrypt(value);
+            string data = new string(value);
+            LambdaBean lb = Lambda.Encrypt(data);
+            byte[] ret = Encoding.ASCII.GetBytes(lb.GetStorableValue());
+            return ret; 
+            //return SecureEngineUtility.SecureEngine.Encrypt(value);
         }	//	encrypt
 
         /// <summary>
@@ -37,7 +43,11 @@ namespace VAdvantage.Utility
         /// <returns>Decrypted Text</returns>
         public static String Decrypt(String value)
         {
-            return SecureEngineUtility.SecureEngine.Decrypt(value);
+            string data = value;
+            LambdaBean lb = Lambda.Decrypt(data);
+            string ret = lb.value;
+            return ret;
+            //return SecureEngineUtility.SecureEngine.Decrypt(value);
         }	//	decrypt
 
 
@@ -49,7 +59,11 @@ namespace VAdvantage.Utility
         /// <returns>Decrypted Text</returns>
         public static byte[] Decrypt(byte[] value)
         {
-            return SecureEngineUtility.SecureEngine.Decrypt(value);
+            string data = Encoding.ASCII.GetString(value);
+            LambdaBean lb = Lambda.Decrypt(data);
+            byte[] ret = Encoding.UTF8.GetBytes(lb.value);
+            return ret;
+            //return SecureEngineUtility.SecureEngine.Decrypt(value);
         }	//	decrypt
 
         /// <summary>
@@ -60,7 +74,9 @@ namespace VAdvantage.Utility
         /// <returns>   @return encrypted String</returns>
         public static Object Encrypt(Object value)
         {
-            return SecureEngineUtility.SecureEngine.Encrypt(value);
+
+            return Lambda.Encrypt(value.ToString()).GetStorableValue();
+            //return SecureEngineUtility.SecureEngine.Encrypt(value);
         }	//	encrypt
 
         /// <summary>
@@ -71,12 +87,20 @@ namespace VAdvantage.Utility
         /// <returns>Decrypted value</returns>
         public static Object Decrypt(Object value)
         {
-            return SecureEngineUtility.SecureEngine.Decrypt(value);
+            string data = (string)value;
+            LambdaBean lb = Lambda.Decrypt(data);
+            return lb.value;
+            //return SecureEngineUtility.SecureEngine.Decrypt(value);
         }	//	decrypt
 
         public static bool IsEncrypted(String value)
         {
-            return SecureEngineUtility.SecureEngine.IsEncrypted(value);
+            //return SecureEngineUtility.SecureEngine.IsEncrypted(value);
+            if(value is null)
+            {
+                return false;
+            }
+            return value.Contains("|");
         }	//	isEncrypted
     
 

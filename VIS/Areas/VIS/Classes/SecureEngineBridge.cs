@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 
 using VAdvantage.Utility;
+using VIS.Helpers;
 
 namespace VIS.Classes
 {
@@ -230,6 +231,10 @@ namespace VIS.Classes
             {
                 throw new ArgumentNullException("cipherText");
             }
+
+            //return Lambda.Decrypt(cipherText).value;
+            
+
             if (key == null)
             {
                 throw new ArgumentNullException("key");
@@ -283,11 +288,14 @@ namespace VIS.Classes
 
         public static String Encrypt(string plainText, string key, string iv)
         {
+            
             // Check arguments.
             if (plainText == null || plainText.Length <= 0)
             {
                 throw new ArgumentNullException("plainText");
             }
+            //return Lambda.Encrypt(plainText).GetStorableValue();
+            
             if (key == null || key.Length <= 0)
             {
                 throw new ArgumentNullException("key");

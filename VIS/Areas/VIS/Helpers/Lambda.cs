@@ -56,7 +56,7 @@ namespace VIS.Helpers
                 {
                     client.DefaultRequestHeaders.Add("x_nonce", nonce);
                     var content = new StringContent(body);
-                    var response = await client.PutAsync("https://wfya6dmbkvmavfz7uv6grsshwu0fgngi.lambda-url.ap-south-1.on.aws/", content);
+                    var response = await client.PutAsync(url, content);
                     if (response != null)
                     {
                         var jsonString = await response.Content.ReadAsStringAsync();
